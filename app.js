@@ -1,48 +1,34 @@
-let tg = window.Telegram.WebApp; 
+let tg = window.Telegram.WebApp;
+tg.expand();
 
- 
+tg.MainButton.textColor = "#FFFFFF";
+tg.MainButton.color = "#2cab37";
 
-tg.expand(); 
+let item = "";
 
- 
+let btn1 = document.getElementById("btn1");
+let btn2 = document.getElementById("btn2");
 
-tg.MainButton.textColor = "#FFFFFF"; 
-tg.MainButton.color = "#2cab37"; 
+btn1.addEventListener("click", function () {
+    if (tg.MainButton.isVisible) {
+        tg.MainButton.hide();
+    } else {
+        tg.MainButton.setText("Вывести информацию по мышкам");
+        item = "1"; // ID для "мышек"
+        tg.MainButton.show();
+    }
+});
 
- 
+btn2.addEventListener("click", function () {
+    if (tg.MainButton.isVisible) {
+        tg.MainButton.hide();
+    } else {
+        tg.MainButton.setText("Вывести информацию по ночи");
+        item = "2"; // ID для "ночи"
+        tg.MainButton.show();
+    }
+});
 
-let item = ""; 
-
- 
-
-let btn1 = document.getElementById("btn1"); 
-let btn2 = document.getElementById("btn2"); 
-
- 
-
-btn1.addEventListener("click", function () { 
- if (tg.MainButton.isVisible) { 
- tg.MainButton.hide(); 
- } 
- else { 
- tg.MainButton.setText("Вывести информацию по мышкам"); 
- item = "1"; 
- tg.MainButton.show(); 
- } 
-}); 
-
- 
-
-btn2.addEventListener("click", function () { 
- if (tg.MainButton.isVisible) { 
- tg.MainButton.hide(); 
- } 
- else { 
- tg.MainButton.setText("Вывести информацию по ночи"); 
- item = "2"; 
- tg.MainButton.show(); 
- } 
- }); 
-Telegram.WebApp.onEvent("mainButtonClicked", function () { 
- tg.sendData(item); 
-}); 
+Telegram.WebApp.onEvent("mainButtonClicked", function () {
+    tg.sendData(item);
+});
