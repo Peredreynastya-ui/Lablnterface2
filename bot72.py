@@ -1,7 +1,6 @@
 import telebot
 from telebot import types
 from telegram import WebAppInfo, KeyboardButton, ReplyKeyboardMarkup
-import logging
 
 bot = telebot.TeleBot('7852929978:AAGxVvbG4ykN_w6760I-m_79ppW5rucWLgg')
 DISC = {
@@ -41,16 +40,11 @@ def callback_worker(call):
  elif call.data == "books":
     bot.send_message(call.message.chat.id, "Ветер в ивах, Таинственный сад, Маленький лорд Фаунтлерой")
 # Обработчик для Web App данных
-
-logging.basicConfig(level=logging.INFO)
-
 @bot.message_handler(content_types=['web_app_data'])
 def handle_web_app_data(message):
-    logging.info(f"Received web app data: {message.web_app_data.data}")
     data = message.web_app_data.data
     if data in DISC:
         bot.send_message(message.chat.id, DISC[data])
-
 
 
 bot.polling(none_stop=True, interval=0)
