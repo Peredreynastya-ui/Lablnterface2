@@ -3,10 +3,6 @@ from telebot import types
 from telegram import WebAppInfo, KeyboardButton, ReplyKeyboardMarkup
 
 bot = telebot.TeleBot('7852929978:AAGxVvbG4ykN_w6760I-m_79ppW5rucWLgg')
-DISC = {
-    '1': 'Иллюстрация влюблённые мышки на льду была придумана как рождественская картинка для детей',
-    '2': 'Рисунок ночи символизирует гармонию между быстротечностью времени и безграничным спокойствием',
-}
 @bot.message_handler(content_types=['text']) 
 def get_text_messages(message):
 
@@ -40,6 +36,11 @@ def callback_worker(call):
  elif call.data == "books":
     bot.send_message(call.message.chat.id, "Ветер в ивах, Таинственный сад, Маленький лорд Фаунтлерой")
 # Обработчик для Web App данных
+DISC = {
+    '1': 'Иллюстрация влюблённые мышки на льду была придумана как рождественская картинка для детей',
+    '2': 'Рисунок ночи символизирует гармонию между быстротечностью времени и безграничным спокойствием',
+}
+
 @bot.message_handler(content_types=['web_app_data'])
 def handle_web_app_data(message):
     data = message.web_app_data.data
