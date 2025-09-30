@@ -40,9 +40,11 @@ def callback_worker(call):
  elif call.data == "books":
     bot.send_message(call.message.chat.id, "Ветер в ивах, Таинственный сад, Маленький лорд Фаунтлерой")
 # Обработчик для Web App данных
-@bot.message_handler(content_types=['text'])
-def buy_process(message):
-    if message.text in DISC:
-        bot.send_message(message.chat.id, DISC[message.text])
+@bot.message_handler(func=lambda message: True)
+def handle_web_app_data(message):
+    if message.web_app_data:
+        data = message.web_app_data.data
+        if data in DISC:
+            bot.send_message(message.chat.id, DISC[data])
 
 bot.polling(none_stop=True, interval=0)
