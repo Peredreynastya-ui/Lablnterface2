@@ -2,6 +2,7 @@ let DISC = {
     '1': 'Иллюстрация влюблённые мышки на льду была придумана как рождественская картинка для детей',
     '2': 'Рисунок ночи символизирует гармонию между быстротечностью времени и безграничным спокойствием',
 };
+
 let tg = window.Telegram.WebApp;
 tg.expand();
 
@@ -36,3 +37,5 @@ btn2.addEventListener("click", function () {
 Telegram.WebApp.onEvent("mainButtonClicked", function () {
     tg.sendData(item);
 });
+
+
